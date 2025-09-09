@@ -142,7 +142,7 @@
         <div class="text-center z-10 px-6">
             <h1 class="text-5xl md:text-7xl font-extrabold mb-6 glow-text">RFID Scan ID Sistem Absensi Siswa Online</h1>
             <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto leading-relaxed">
-                Inovasi teknologi RFID terdepan di Indonesia untuk sistem absensi siswa yang efisien, akurat, dan terhubung secara online. Dengan solusi kami, sekolah-sekolah di seluruh negeri dapat mengelola kehadiran siswa dengan mudah dan modern.
+                RFID SHABIT, Inovasi teknologi RFID terdepan di Indonesia untuk sistem absensi siswa yang efisien, akurat, dan terhubung secara online. Dengan solusi kami, sekolah-sekolah di seluruh negeri dapat mengelola kehadiran siswa dengan mudah dan modern.
             </p>
             <div class="flex flex-wrap justify-center gap-4">
 			<a href="#products" /a>
@@ -214,7 +214,7 @@
     <img src="gambar/download.webp" class="w-full rounded mb-4" />
     <p>
       RFID RC55 adalah pembaca id card portabel yang dapat terhubung dengan Arduino Uno dan modul WiFi Wemos D1 Mini 
-      untuk integrasi absensi online langsung ke Google Sheet, cara kerjanya dengan scan kedalan RFID dan rfid mngirim data kedalam arduino uno dan arduino memproses data id tersebut sesuai list array data siswa tersebut dan menulisnya didalam serial monitor, setelah itu data serial yang ada diserial monitor tersebut akan dikirimkan kedalam modul wemos d1 mini yang terhubung kedalam internet dan mengirim data tersebut melalui POST.
+      untuk integrasi absensi online langsung ke Google Sheet, cara kerjanya dengan scan kedalam RFID tersebut dan RFID akan mengirim data kedalam arduino uno, arduino uno akan memproses data id tersebut dan mencocokkan sesuai array list database siswa tersebut dan menulisnya didalam serial monitor, setelah itu data serial yang ada diserial monitor arduino uno tersebut akan diterima oleh modul wemos d1 mini yang terhubung kedalam internet dan mengirim data tersebut melalui POST.
     </p>
   </div>
 </div>
@@ -224,10 +224,10 @@
   <div class="bg-gray-800 text-white p-6 rounded-lg max-w-lg w-full relative">
     <button onclick="closeModal('modal-kartu')" class="absolute top-2 right-2 text-xl">&times;</button>
     <h2 class="text-2xl font-bold mb-4">Kartu ID Siswa</h2>
-    <img src="gambar/wa.jpeg" class="w-full rounded mb-4" />
+    <img src="gambar/wa.jpeg" class="w-full rounded mb-2" />
     <p>
       Kartu identitas siswa berbasis RFID yang tahan lama. 
-      Chip internal memungkinkan pencatatan kehadiran siswa secara cepat dan terintegrasi dan tercatat dalam list array ke sistem online, cara kerjanya kartu yang tidak terdaftar akan discan terlebih dahulu, setelah itu id kartu yang tidak terdaftar tersebut akan ditangkap oleh serial monitor arduino uno dan tambahkan data lain seperti nama dan lainnya dibagian list array para siswa lain didalam arduino uno, upload dan kartu id anda telah terdaftar.
+      Chip internal memungkinkan pencatatan kehadiran siswa secara cepat dan terintegrasi dan tercatat dalam list array ke sistem online, cara kerjanya kartu yang tidak terdaftar akan discan diRFID terlebih dahulu, setelah itu id kartu yang tidak terdaftar tersebut akan ditangkap oleh serial monitor arduino uno dan tinggal tambahkan data id dan data lain seperti nama dan lainnya dibagian list array para siswa lain didalam arduino uno, upload dan kartu id anda telah terdaftar.
     </p>
   </div>
 </div>
@@ -240,7 +240,7 @@
     <img src="gambar/Capture.jpg" class="w-full rounded mb-4" />
     <p>
       Dashboard absensi online berbasis Google Sheet. 
-      Menyediakan laporan real-time, grafik simple dan rapi, cara kerjanya adalah dengan menerima data dari wemos d1 mini melalui POST, data diterima dan masuk kedalam sheet anda, masuk mulai tabel A - kesamping (bisa diatur batas tabelnya) setelah mencapai batas tabel maka data yang masuk akan kebaris duibawahnya dan terus berulang membuat pendataan lebih rapi.
+      Menyediakan laporan real-time, grafik simple dan rapi, cara kerjanya adalah dengan menerima data dari wemos d1 mini melalui POST, data diterima dan masuk kedalam sheet anda, masuk mulai tabel A - kesamping (bisa diatur batas tabelnya) setelah mencapai batas tabel maka data yang masuk akan kebaris dibawahnya dan terus berulang sampai seterusnya membuat pendataan lebih rapi.
     </p>
   </div>
 </div>
@@ -373,5 +373,6 @@
 </content>
 
 </create_file>
+
 
 
