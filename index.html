@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RFID SHABIT - Solusi Absensi Siswa secara Online!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a1a2e 0%, #1a2e44 50%, #2c3e50 100%);
+            color: #ecf0f1;
+            overflow-x: hidden;
+        }
+        .hero-bg {
+            background: url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e82d7f86-4d72-4d12-8e9c-5549f74cfbfb.png') no-repeat center center/cover;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .hero-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(52, 152, 219, 0.3), rgba(155, 89, 182, 0.3));
+            animation: shimmer 6s infinite ease-in-out;
+        }
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.05); }
+        }
+        .glow-text {
+            text-shadow: 0 0 30px #3498db, 0 0 60px #3498db;
+            animation: textGlow 2s infinite alternate;
+        }
+        @keyframes textGlow {
+            from { text-shadow: 0 0 30px #3498db; }
+            to { text-shadow: 0 0 50px #3498db, 0 0 80px #3498db; }
+        }
+        .btn-primary {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            border: none;
+            padding: 15px 30px;
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.5);
+        }
+        .btn-secondary {
+            background: linear-gradient(45deg, #e74c3c, #c0392b);
+            border: none;
+            padding: 12px 25px;
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .btn-secondary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(231, 76, 60, 0.5);
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(52, 152, 219, 0.2);
+            border-radius: 15px;
+            padding: 25px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(52, 152, 219, 0.4);
+        }
+        .animate-slide-up {
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideUp 1s forwards;
+        }
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-text {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .floating-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #3498db;
+            border-radius: 50%;
+            animation: particleFloat 8s linear infinite;
+        }
+        @keyframes particleFloat {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+            50% { transform: translateY(-100px) rotate(180deg); opacity: 0.4; }
+            100% { transform: translateY(-200px) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particles Background -->
+    <div id="particles"></div>
+
+    <!-- Header -->
+    <header class="bg-gray-800 bg-opacity-80 py-4 px-6 fixed w-full z-10 shadow-lg">
+        <nav class="flex justify-between items-center max-w-7xl mx-auto">
+            <div class="logo-container"> 
+                <span class="logo-text text-blue-300">RFID SHABIT</span>
+            </div>
+            <ul class="flex space-x-6 text-sm">
+                <li><a href="#home" class="text-gray-300 hover:text-blue-400 transition duration-300">Beranda</a></li>
+                <li><a href="#about" class="text-gray-300 hover:text-blue-400 transition duration-300">Tentang Kami</a></li>
+                <li><a href="#products" class="text-gray-300 hover:text-blue-400 transition duration-300">Produk</a></li>
+                <li><a href="#cases" class="text-gray-300 hover:text-blue-400 transition duration-300">demonstrasi</a></li>
+                <li><a href="#contact" class="text-gray-300 hover:text-blue-400 transition duration-300">hubungi kami</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg hero-overlay relative">
+        <div class="text-center z-10 px-6">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 glow-text">RFID Scan ID Sistem Absensi Siswa Online</h1>
+            <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto leading-relaxed">
+                Inovasi teknologi RFID terdepan di Indonesia untuk sistem absensi siswa yang efisien, akurat, dan terhubung secara online. Dengan solusi kami, sekolah-sekolah di seluruh negeri dapat mengelola kehadiran siswa dengan mudah dan modern.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+			<a href="#products" /a>
+                <button class="btn-primary">Jelajahi Produk</button>
+				<a href="#contact" /a>
+                <button class="btn-secondary">Pesan produk</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6">
+        <div class="max-w-6xl mx-auto text-center animate-slide-up">
+            <h2 class="text-4xl font-bold mb-8 glow-text">Tentang RFID SHABIT</h2>
+            <p class="text-lg mb-8 leading-relaxed max-w-4xl mx-auto">
+                kami siswa shalatiyah bitin telah mengembangkan teknologi IOT arduino. Kami menyediakan sistem absensi siswa yang terintegrasi dengan platform online seperti google sheet, memungkinkan pemantauan real-time, laporan otomatis, dan integrasi dengan sistem sekolah minimalisasi kesalahan dan meningkatkan efisiensi administrasi.
+            </p>
+        </div>
+    </section>
+
+<!-- Products Section -->
+<section id="products" class="py-20 px-6 bg-gray-900 bg-opacity-50">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-4xl font-bold text-center mb-12 glow-text">
+      Produk Kami untuk Absensi Siswa
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      
+      <!-- Produk 1 -->
+      <div class="card animate-slide-up flex flex-col h-full">
+        <img src="gambar/download.webp" alt="Compact portable RFID reader device in ergonomic black case with LCD display, antenna, and USB connectivity" class="w-full h-48 object-cover mb-4 rounded" />
+        <h3 class="text-2xl font-semibold mb-3">Pembaca Kartu ID RFID RC55</h3>
+        <p class="flex-grow">
+          Alat pembaca RFID portabel yang mudah digunakan untuk absensi di area sekolah. 
+          Terhubung dengan Arduino Uno dan modul WiFi Wemos D1 Mini, memungkinkan integrasi ke internet dan sinkronisasi langsung dengan Google Sheet.
+        </p>
+        <button class="btn-primary mt-4 w-full">Lihat Detail Cara Kerja</button>
+      </div>
+      
+      <!-- Produk 2 -->
+      <div class="card animate-slide-up flex flex-col h-full" style="animation-delay: 0.3s;">
+        <img src="gambar/wa.jpeg" alt="Custom-designed RFID student ID card with holographic security features" class="w-full h-48 object-cover mb-4 rounded" />
+        <h3 class="text-2xl font-semibold mb-3">Kartu ID Siswa</h3>
+        <p class="flex-grow">
+          Kartu identitas tahan lama dengan chip RFID internal. 
+          Mudah dipindai dan terintegrasi dengan sistem absensi online untuk pencatatan presisi kehadiran siswa.
+        </p>
+        <button class="btn-primary mt-4 w-full">Lihat Detail Cara Kerja</button>
+      </div>
+      
+      <!-- Produk 3 -->
+      <div class="card animate-slide-up flex flex-col h-full" style="animation-delay: 0.6s;">
+        <img src="gambar/capture.jpg" alt="Web-based attendance dashboard interface with graphs, reports, and real-time student data" class="w-full h-48 object-cover mb-4 rounded" />
+        <h3 class="text-2xl font-semibold mb-3">Dashboard Absensi Online</h3>
+        <p class="flex-grow">
+          Platform berbasis Google Sheet untuk mengelola dan memantau absensi siswa. 
+          Dilengkapi laporan real-time, grafik interaktif, serta opsi filter dan ekspor data.
+        </p>
+        <button class="btn-primary mt-4 w-full">Lihat Detail Cara Kerja</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+ <!-- demonstrasi Section -->
+<section id="cases" class="py-20 px-6 bg-gray-900 bg-opacity-60">
+  <div class="max-w-6xl mx-auto text-center">
+    <h2 class="text-4xl font-bold mb-12 glow-text">Demonstrasi</h2>
+    <video 
+      controls 
+      preload="metadata" 
+      class="mx-auto rounded-lg shadow-lg max-w-full h-auto"
+      style="box-shadow: 0 0 40px #3498db;"
+      poster="thumbnail.jpg">
+      <source src="video/video1.mp4" type="video/mp4" />
+      <source src="video/demo-absensi.webm" type="video/webm" />
+      Browser Anda tidak mendukung tag video.
+    </video>
+    <p class="mt-6 text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
+      Tonton video demonstrasi sistem absensi RFID kami yang menunjukkan kemudahan penggunaan dan integrasi teknologi secara real-time.
+    </p>
+  </div>
+</section>
+
+ <!-- Contact Section -->
+<section id="contact" class="py-20 px-6 bg-gray-800 bg-opacity-50">
+  <div class="max-w-6xl mx-auto text-center">
+    <h2 class="text-4xl font-bold mb-8 glow-text">Pesan? Hubungi Kami</h2>
+    <p class="text-lg mb-12">
+      Siap untuk merevolusi sistem absensi sekolah Anda? Hubungi tim profesional RFID Indonesia untuk konsultasi gratis dan demo produk.
+    </p>
+
+    <div class="grid grid-cols-0 md:grid-cols-1 gap-3">
+      <!-- Email -->
+      <div class="card h-full flex flex-col justify-center items-center">
+        <h3 class="text-xl font-semibold mb-3">📧 Email</h3>
+        <a href="mailto:info@rfidindonesia.com" 
+           class="w-full py-3 px-5 rounded-lg bg-gradient-to-r from-blue-500 to-blue-700 
+                  hover:from-blue-600 hover:to-blue-800 transition text-white font-medium text-center">
+          info@rfidindonesia.com
+        </a>
+      </div>
+
+      <!-- Telepon -->
+      <div class="card h-full flex flex-col justify-center items-center">
+        <h3 class="text-xl font-semibold mb-3">📞 Telepon</h3>
+        <a href="tel:+6285820378790" 
+           class="w-full py-3 px-5 rounded-lg bg-gradient-to-r from-green-500 to-green-700 
+                  hover:from-green-600 hover:to-green-800 transition text-white font-medium text-center">
+          (Hotline) +62 852-4978-5440
+        </a>
+      </div>
+	  
+	    <!-- Alamat -->
+      <div class="card h-full flex flex-col justify-center items-center">
+        <h3 class="text-xl font-semibold mb-3">📍 Alamat</h3>
+        <p class="leading-relaxed text-gray-200 text-center">
+          jl.gerilya No 40<br />
+          bitin, Indonesia
+        </p>
+      </div>
+
+     
+    </div>
+  </div>
+</section>
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-6 px-6 text-center">
+        <p>© 2025 RFID SHABIT. Dirancang untuk Menghadirkan Masa Depan Pendidikan Modern.</p>
+    </footer>
+
+    <script>
+        // Animate elements on scroll
+        const slideUpObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-slide-up');
+                }
+            });
+        });
+        document.querySelectorAll('.animate-slide-up').forEach(el => slideUpObserver.observe(el));
+
+        // Particle animation
+        function generateParticles() {
+            for (let i = 0; i < 10; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'floating-particle';
+                particle.style.left = Math.random() * 100 + '%';
+                document.getElementById('particles').appendChild(particle);
+                setTimeout(() => particle.remove(), 8000);
+            }
+        }
+        setInterval(generateParticles, 2000);
+
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Button interactive effects
+        document.querySelectorAll('.btn-primary, .btn-secondary').forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                console.log('Interactive button effect activated - futuristic audio simulation');
+            });
+        });
+    </script>
+</body>
+</html>
+</content>
+</create_file>
