@@ -193,7 +193,7 @@
 
       <!-- Produk 3 -->
       <div class="card animate-slide-up flex flex-col h-full" style="animation-delay: 0.6s;">
-        <img src="gambar/capture.jpg" class="w-full h-48 object-cover mb-4 rounded" />
+        <img src="gambar/Capture.jpg" class="w-full h-48 object-cover mb-4 rounded" />
         <h3 class="text-2xl font-semibold mb-3">Dashboard Absensi Online</h3>
         <p class="flex-grow">
           Platform berbasis Google Sheet untuk mengelola absensi siswa.
@@ -213,8 +213,8 @@
     <h2 class="text-2xl font-bold mb-4">Pembaca Kartu ID RFID RC55</h2>
     <img src="gambar/download.webp" class="w-full rounded mb-4" />
     <p>
-      RC55 adalah pembaca RFID portabel yang dapat terhubung dengan Arduino Uno dan modul WiFi Wemos D1 Mini 
-      untuk integrasi absensi online langsung ke Google Sheet.
+      RFID RC55 adalah pembaca id card portabel yang dapat terhubung dengan Arduino Uno dan modul WiFi Wemos D1 Mini 
+      untuk integrasi absensi online langsung ke Google Sheet, cara kerjanya dengan scan kedalan RFID dan rfid mngirim data kedalam arduino uno dan arduino memproses data id tersebut sesuai list array data siswa tersebut dan menulisnya didalam serial monitor, setelah itu data serial yang ada diserial monitor tersebut akan dikirimkan kedalam modul wemos d1 mini yang terhubung kedalam internet dan mengirim data tersebut melalui POST.
     </p>
   </div>
 </div>
@@ -227,7 +227,7 @@
     <img src="gambar/wa.jpeg" class="w-full rounded mb-4" />
     <p>
       Kartu identitas siswa berbasis RFID yang tahan lama. 
-      Chip internal memungkinkan pencatatan kehadiran siswa secara cepat dan terintegrasi ke sistem online.
+      Chip internal memungkinkan pencatatan kehadiran siswa secara cepat dan terintegrasi dan tercatat dalam list array ke sistem online, cara kerjanya kartu yang tidak terdaftar akan discan terlebih dahulu, setelah itu id kartu yang tidak terdaftar tersebut akan ditangkap oleh serial monitor arduino uno dan tambahkan data lain seperti nama dan lainnya dibagian list array para siswa lain didalam arduino uno, upload dan kartu id anda telah terdaftar.
     </p>
   </div>
 </div>
@@ -237,10 +237,10 @@
   <div class="bg-gray-800 text-white p-6 rounded-lg max-w-lg w-full relative">
     <button onclick="closeModal('modal-dashboard')" class="absolute top-2 right-2 text-xl">&times;</button>
     <h2 class="text-2xl font-bold mb-4">Dashboard Absensi Online</h2>
-    <img src="gambar/capture.jpg" class="w-full rounded mb-4" />
+    <img src="gambar/Capture.jpg" class="w-full rounded mb-4" />
     <p>
       Dashboard absensi online berbasis Google Sheet. 
-      Menyediakan laporan real-time, grafik interaktif, serta opsi filter dan ekspor data.
+      Menyediakan laporan real-time, grafik simple dan rapi, cara kerjanya adalah dengan menerima data dari wemos d1 mini melalui POST, data diterima dan masuk kedalam sheet anda, masuk mulai tabel A - kesamping (bisa diatur batas tabelnya) setelah mencapai batas tabel maka data yang masuk akan kebaris duibawahnya dan terus berulang membuat pendataan lebih rapi.
     </p>
   </div>
 </div>
@@ -373,4 +373,5 @@
 </content>
 
 </create_file>
+
 
