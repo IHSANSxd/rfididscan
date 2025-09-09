@@ -170,43 +170,91 @@
       Produk Kami untuk Absensi Siswa
     </h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-      
+
       <!-- Produk 1 -->
       <div class="card animate-slide-up flex flex-col h-full">
-        <img src="gambar/download.webp" alt="Compact portable RFID reader device in ergonomic black case with LCD display, antenna, and USB connectivity" class="w-full h-48 object-cover mb-4 rounded" />
+        <img src="gambar/download.webp" class="w-full h-48 object-cover mb-4 rounded" />
         <h3 class="text-2xl font-semibold mb-3">Pembaca Kartu ID RFID RC55</h3>
         <p class="flex-grow">
-          Alat pembaca RFID portabel yang mudah digunakan untuk absensi di area sekolah. 
-          Terhubung dengan Arduino Uno dan modul WiFi Wemos D1 Mini, memungkinkan integrasi ke internet dan sinkronisasi langsung dengan Google Sheet.
+          Alat pembaca RFID portabel yang mudah digunakan untuk absensi sekolah.
         </p>
-        <button class="btn-primary mt-4 w-full">Lihat Detail Cara Kerja</button>
+        <button onclick="openModal('modal-rc55')" class="btn-primary mt-4 w-full">Lihat Detail Cara Kerja</button>
       </div>
-      
+
       <!-- Produk 2 -->
       <div class="card animate-slide-up flex flex-col h-full" style="animation-delay: 0.3s;">
-        <img src="gambar/wa.jpeg" alt="Custom-designed RFID student ID card with holographic security features" class="w-full h-48 object-cover mb-4 rounded" />
+        <img src="gambar/wa.jpeg" class="w-full h-48 object-cover mb-4 rounded" />
         <h3 class="text-2xl font-semibold mb-3">Kartu ID Siswa</h3>
         <p class="flex-grow">
-          Kartu identitas tahan lama dengan chip RFID internal. 
-          Mudah dipindai dan terintegrasi dengan sistem absensi online untuk pencatatan presisi kehadiran siswa.
+          Kartu identitas tahan lama dengan chip RFID internal.
         </p>
-        <button class="btn-primary mt-4 w-full">Lihat Detail Cara Kerja</button>
+        <button onclick="openModal('modal-kartu')" class="btn-primary mt-4 w-full">Lihat Detail Cara Kerja</button>
       </div>
-      
+
       <!-- Produk 3 -->
       <div class="card animate-slide-up flex flex-col h-full" style="animation-delay: 0.6s;">
-        <img src="gambar/Capture.jpg" alt="Web-based attendance dashboard interface with graphs, reports, and real-time student data" class="w-full h-48 object-cover mb-4 rounded" />
+        <img src="gambar/capture.jpg" class="w-full h-48 object-cover mb-4 rounded" />
         <h3 class="text-2xl font-semibold mb-3">Dashboard Absensi Online</h3>
         <p class="flex-grow">
-          Platform berbasis Google Sheet untuk mengelola dan memantau absensi siswa. 
-          Dilengkapi laporan real-time, grafik interaktif, serta opsi filter dan ekspor data.
+          Platform berbasis Google Sheet untuk mengelola absensi siswa.
         </p>
-        <button class="btn-primary mt-4 w-full">Lihat Detail Cara Kerja</button>
+        <button onclick="openModal('modal-dashboard')" class="btn-primary mt-4 w-full">Lihat Detail Cara Kerja</button>
       </div>
 
     </div>
   </div>
 </section>
+
+<!-- MODALS -->
+<!-- Modal Produk 1 -->
+<div id="modal-rc55" class="modal hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+  <div class="bg-gray-800 text-white p-6 rounded-lg max-w-lg w-full relative">
+    <button onclick="closeModal('modal-rc55')" class="absolute top-2 right-2 text-xl">&times;</button>
+    <h2 class="text-2xl font-bold mb-4">Pembaca Kartu ID RFID RC55</h2>
+    <img src="gambar/download.webp" class="w-full rounded mb-4" />
+    <p>
+      RC55 adalah pembaca RFID portabel yang dapat terhubung dengan Arduino Uno dan modul WiFi Wemos D1 Mini 
+      untuk integrasi absensi online langsung ke Google Sheet.
+    </p>
+  </div>
+</div>
+
+<!-- Modal Produk 2 -->
+<div id="modal-kartu" class="modal hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+  <div class="bg-gray-800 text-white p-6 rounded-lg max-w-lg w-full relative">
+    <button onclick="closeModal('modal-kartu')" class="absolute top-2 right-2 text-xl">&times;</button>
+    <h2 class="text-2xl font-bold mb-4">Kartu ID Siswa</h2>
+    <img src="gambar/wa.jpeg" class="w-full rounded mb-4" />
+    <p>
+      Kartu identitas siswa berbasis RFID yang tahan lama. 
+      Chip internal memungkinkan pencatatan kehadiran siswa secara cepat dan terintegrasi ke sistem online.
+    </p>
+  </div>
+</div>
+
+<!-- Modal Produk 3 -->
+<div id="modal-dashboard" class="modal hidden fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+  <div class="bg-gray-800 text-white p-6 rounded-lg max-w-lg w-full relative">
+    <button onclick="closeModal('modal-dashboard')" class="absolute top-2 right-2 text-xl">&times;</button>
+    <h2 class="text-2xl font-bold mb-4">Dashboard Absensi Online</h2>
+    <img src="gambar/capture.jpg" class="w-full rounded mb-4" />
+    <p>
+      Dashboard absensi online berbasis Google Sheet. 
+      Menyediakan laporan real-time, grafik interaktif, serta opsi filter dan ekspor data.
+    </p>
+  </div>
+</div>
+
+<!-- SCRIPT -->
+<script>
+  function openModal(id) {
+    document.getElementById(id).classList.remove('hidden');
+  }
+  function closeModal(id) {
+    document.getElementById(id).classList.add('hidden');
+  }
+</script>
+
 
 
  <!-- demonstrasi Section -->
@@ -325,3 +373,4 @@
 </content>
 
 </create_file>
+
